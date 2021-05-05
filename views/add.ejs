@@ -2,29 +2,29 @@
 
 <div class="container-fluid">
   <h1 class="text-center">Add a Board Game</h1>
-  <form action="/add" method="POST">
+  <form action="/add" method="POST" class="validated-form" novalidate>
     <!-- TITLE -->
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
-      <input type="text" class="form-control" id="title" aria-describedby="title">
+      <input type="text" class="form-control" id="title" name="title" aria-describedby="title" required>
     </div>
 
     <!-- DESIGNER -->
     <div class="mb-3">
       <label for="designer" class="form-label">Designer</label>
-      <input type="text" class="form-control" id="designer" aria-describedby="designer">
+      <input type="text" class="form-control" id="designer" name="designer" aria-describedby="designer">
     </div>
 
     <!-- PUBLISHER -->
     <div class="mb-3">
       <label for="publisher" class="form-label">Publisher</label>
-      <input type="text" class="form-control" id="publisher" aria-describedby="publisher">
+      <input type="text" class="form-control" id="publisher" name="publisher" aria-describedby="publisher">
     </div>
 
     <!-- DESCRIPTION -->
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
-      <textarea class="form-control" id="description" aria-describedby="description"></textarea>
+      <textarea class="form-control" id="description" name="description" aria-describedby="description"></textarea>
     </div>
 
     <!-- IMAGES -->
@@ -35,7 +35,9 @@
     </div>
 
     <!-- SUBMIT BUTTON -->
-    <button type="submit" class="btn btn-success">Add Board Game</button>
+    <div class="mb-3">
+      <button class="btn btn-success">Add Board Game</button>
+    </div>
 
   </form>
 

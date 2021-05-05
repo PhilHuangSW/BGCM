@@ -19,6 +19,11 @@ app.get('/add', (req, res) => {
   res.render('add');
 })
 
+app.post('/add', (req, res) => {
+  console.log(req.body);
+  res.end();
+})
+
 app.get('*', (req, res) => {
   res.render('home');
 })
