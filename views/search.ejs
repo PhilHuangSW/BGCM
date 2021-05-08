@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate') %>
+
+<h1 class="text-center mt-3">Searching for '<%= query %>'</h1>
+
+<div class="container">
+  <div class="mb-3 mt-3">
+    <h3>Your games</h3>
+  </div>
+
+  <% if (matches) { %>
+  <div class="row row-cols-1 row-cols-md-5 g-4">
+    <% for( let match of matches ) { %>
+    <div class="col">
+      <div class="card mb-3 h-100">
+        <a href="/show/<%= match.id %>"><img src="<%= match.images %>" class="card-img-top"
+            alt="<%= match.title %> Cover Image"></a>
+        <div class="card-body">
+          <h5 class="card-title"><%= match.title %> </h5>
+          <h6 class="card-text text-muted">Designer: <%= match.designer %> </h6>
+          <h6 class="card-text text-muted">Publisher: <%= match.publisher %> </h6>
+          <p class="card-text"><%= match.description.slice(0, 100) %>...</p>
+
+
+        </div>
+        <div class="card-footer text-center">
+          <a href="/show/<%= match.id %>" class="btn btn-primary"><%= match.title %></a>
+        </div>
+      </div>
+
+    </div>
+    <% } %>
+
+    <% } %>
+
+  </div>
