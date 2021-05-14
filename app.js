@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(methodOverride('_method'))
+app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://localhost:27017/BGCM', {
   useNewUrlParser: true,
@@ -30,9 +31,13 @@ mongoose.connect('mongodb://localhost:27017/BGCM', {
     console.log(err);
   });
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
+  res.render('home');
+})
+
+app.get('/collection', async (req, res) => {
   const boardgames = await Boardgame.find({});
-  res.render('home', { boardgames });
+  res.render('collection', { boardgames });
 });
 
 app.get('/add', (req, res) => {
@@ -57,6 +62,10 @@ app.post('/search', async (req, res) => {
     }
   })
   res.render('search', { matches, query });
+})
+
+app.get('/wishlist', async (req, res) => {
+  res.render('wishlist');
 })
 
 app.delete('/show/:id', async (req, res) => {

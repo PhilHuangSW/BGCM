@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate') %>
+
+<h1 class="text-center">Welcome to Board Game Collection Manager!</h1>
+
+<div class="container">
+  <div class="mb-3 mt-3">
+    <h3>Total Games Owned: <span><em class="text-success"><%= boardgames.length %></em></span></h3>
+  </div>
+
+  <% if (boardgames) { %>
+  <div class="row row-cols-1 row-cols-md-5 g-4">
+    <% for( let boardgame of boardgames ) { %>
+    <div class="col">
+      <div class="card mb-3 h-100">
+        <a href="/show/<%= boardgame.id %>"><img src="<%= boardgame.images %>" class="card-img-top"
+            alt="<%= boardgame.title %> Cover Image"></a>
+        <div class="card-body">
+          <h5 class="card-title"><%= boardgame.title %> </h5>
+          <h6 class="card-text text-muted">Designer: <%= boardgame.designer %> </h6>
+          <h6 class="card-text text-muted">Publisher: <%= boardgame.publisher %> </h6>
+          <p class="card-text"><%= boardgame.description.slice(0, 100) %>...</p>
+
+
+        </div>
+        <!-- <div class="card-footer text-center">
+          <a href="/show/<%= boardgame.id %>" class="btn btn-primary"><%= boardgame.title %></a>
+        </div> -->
+      </div>
+
+    </div>
+    <% } %>
+  </div>
+  <% } %>
+
+</div>
